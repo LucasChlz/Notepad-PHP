@@ -11,7 +11,8 @@
             "App\\": "app/"
         },
         "files": [
-            "app/config.php"
+            "app/config.php",
+            "app/database/databaseConfig.php"
         ]
     },
     "require": {

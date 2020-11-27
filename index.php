@@ -8,6 +8,7 @@ $router = new Router(URL);
 $router->namespace('App\Controllers');
 
 $router->group('/');
-$router->get('/', 'AppController:newUser');
+$router->get('/', 'AppController:newUser', 'newUserPage');
+$router->post('/new', 'AppController:newUserPost', 'newUserPost');
 
 $router->dispatch();

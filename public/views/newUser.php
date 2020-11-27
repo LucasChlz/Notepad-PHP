@@ -24,7 +24,7 @@
 
 <div class="container mt-5 text-white">
     <h2 class="text-center">Fill all Fields</h2>
-    <form>
+    <form method="POST" action="<?= URL ?>/new">
         <div class="form-group">
         <label class="text-white" for="">Nickname</label>
         <input type="text" class="form-control" name="nickname">
