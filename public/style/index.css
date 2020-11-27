@@ -1,0 +1,23 @@
+body, html {
+    background-color: rgb(36, 35, 35);
+}
+
+.nav-yellow {
+    background-color: rgb(255, 173, 31);
+}
+
+.nav-yellow a {
+    color: white !important;
+    font-size: 22px;
+}
+
+.form-not label {
+    color: white !important;
+}
+
+.btn-confirm {
+    width: 130px;
+    background-color: rgb(255, 173, 31);
+    font-size: 18px;
+    color: white;
+}
