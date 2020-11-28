@@ -1,0 +1,21 @@
+.boxAlert {
+    position: absolute;
+    z-index: 999;
+    top: 170px;
+    left: -300px;
+    width: 300px;
+    background-color: #f9c9ce;
+    height: auto;
+    padding: 10px 10px;
+    min-height: 50px;
+    border-bottom-right-radius: 30px;
+    font-family: Neufreit;
+    text-align: center;
+    color: rgb(253, 253, 253);
+    animation: error-box 1s forwards;
+}
+
+.boxAlert p {
+    margin-top: 5px;
+}
+

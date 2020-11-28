@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?= URL ?>/public/style/index.css">
     <link rel="stylesheet" href="<?= URL ?>/public/style/form.css">
+    <link rel="stylesheet" href="<?= URL ?>/public/style/animation.css">
+    <link rel="stylesheet" href="<?= URL ?>/public/style/box.css">
     <link rel="stylesheet" href="<?= URL ?>/public/style/navbar.css">
     <title>Sig In</title
 </head>

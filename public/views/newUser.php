@@ -1,12 +1,17 @@
 <?= $v->insert('templates/navbar'); ?>
-<?php if (!empty($err)): ?>
-    <h2 class="text-white"><?= $err; ?></h2>
-<?php endif; ?>
 
-<?php if (!empty($sucess)): ?>
-    <h2 class="text-white"><?= $sucess; ?></h2>
-<?php endif; ?>
 <section class="background">
+    <?php if (!empty($err)): ?>
+        <div class="boxAlert">
+        <p><?= $err; ?></p>
+        </div><!--boxAlert-->
+    <?php endif; ?>
+    
+    <?php if (!empty($sucess)): ?>
+        <div class="boxAlert">
+        <p><?= $sucess; ?></p>
+        </div><!--boxAlert-->
+    <?php endif; ?>
    <div class="container">
         <section class="form-container">
             <h1>Create Your Account Now!</h1>
