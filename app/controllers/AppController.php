@@ -9,19 +9,28 @@ class AppController
 {
 
     public $router;
+
     public $template;
     public $userModel;
+    
+    public $sucessMessage;
+    public $errorMessage;
 
     public function __construct($router)
     {
         $this->router = $router;
+
         $this->userModel = new \App\Models\UserModel;
         $this->template = Engine::create('public/views/', 'php');
     }
 
-    public function newUser()
+    public function newUser(): void
     {
-        echo $this->template->render('newUser');
+        echo $this->template->render('newUser', [
+            'router' => $this->router,
+            'sucess' => $this->sucessMessage,
+            'err' => $this->errorMessage
+        ]);
     }
 
     public function newUserPost($data)
@@ -31,9 +40,13 @@ class AppController
         $password = $data['password'];
 
         try{
-            $this->userModel->registerNewUser($nickname,$email,$password);
+            if ($this->userModel->registerNewUser($nickname, $email, $password)) {
+                $this->sucessMessage = 'User sucessfully created';
+                return $this->newUser();    
+            }
         } catch(Exception $e) {
-            echo $e->getMessage();  
+            $this->errorMessage = $e->getMessage();
+            return $this->newUser();
         }
     }
 }

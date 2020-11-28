@@ -9,12 +9,14 @@ class UserModel
 
     private $database;
 
+    public $sucessMessage;
+
     public function __construct()
     {
         $this->database = new \App\Database\Sql;
     }
 
-    public function validateData($nickname, $email, $password): bool
+    public function validateData(string $nickname, string $email, string $password): bool
     {   
 
         if (empty($nickname) || empty($email) || empty($password)) {
@@ -42,15 +44,14 @@ class UserModel
         return true;
     }
 
-    public function registerNewUser($nickname, $email, $password)
+    public function registerNewUser(string $nickname, string $email, string $password): bool 
     {
-        try {
-            $this->validateData($nickname, $email, $password);
 
-            $insert = $this->database->connect()->prepare("INSERT INTO `users` VALUES (null, ?, ?, ?)");
-            $insert->execute(array($nickname, $email, sha1($password)));
-        } catch (Exception $e) {
-            echo $e->getMessage();
-        }
+        $this->validateData($nickname, $email, $password);
+
+        $insert = $this->database->connect()->prepare("INSERT INTO `users` VALUES (null, ?, ?, ?)");
+        $insert->execute(array($nickname, $email, sha1($password)));
+       
+        return true;
     }
 }

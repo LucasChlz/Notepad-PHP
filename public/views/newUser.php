@@ -21,10 +21,16 @@
     </li>
   </div>
 </nav>
+<?php if (!empty($err)): ?>
+    <h2 class="text-white"><?= $err; ?></h2>
+<?php endif; ?>
 
+<?php if (!empty($sucess)): ?>
+    <h2 class="text-white"><?= $sucess; ?></h2>
+<?php endif; ?>
 <div class="container mt-5 text-white">
     <h2 class="text-center">Fill all Fields</h2>
-    <form method="POST" action="<?= URL ?>/new">
+    <form method="POST" action="<?= $router->route('newUserPost'); ?>">
         <div class="form-group">
         <label class="text-white" for="">Nickname</label>
         <input type="text" class="form-control" name="nickname">
