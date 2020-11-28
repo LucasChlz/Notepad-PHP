@@ -21,7 +21,9 @@ class AppController
         $this->router = $router;
 
         $this->userModel = new \App\Models\UserModel;
-        $this->template = Engine::create('public/views/', 'php');
+        $this->template = Engine::create(
+            dirname(__DIR__, 2).'/public/views/', 'php'
+        );
     }
 
     public function newUser(): void

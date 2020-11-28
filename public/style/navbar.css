@@ -1,0 +1,35 @@
+.nav-bar {
+    width: 100%;
+    padding: 20px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+  
+}
+
+.nav-bar ul li {
+    list-style-type: none;
+}
+
+.logo {
+    font-size: 23px;
+    float: left;
+    cursor: pointer;
+}
+
+.nav-bar ul li a {
+    color:white;
+    margin-top: 5px;
+    text-decoration: none;
+    float: right;
+}
+
+.logo img {
+    width: 100%;
+}
+
+.container ul li img {
+    margin-top: 5px;
+    width: 100%;
+}
+
+  

@@ -1,23 +1,55 @@
-body, html {
-    background-color: rgb(36, 35, 35);
+@font-face {
+    font-family: Yesstea;
+    src: url('../fonts/Yesstea.otf');
 }
 
-.nav-yellow {
-    background-color: rgb(255, 173, 31);
+@font-face {
+    font-family: Zara;
+    src: url('../fonts/Zara-Regular.otf');
 }
 
-.nav-yellow a {
-    color: white !important;
-    font-size: 22px;
+@font-face {
+    font-family: Hades;
+    src: url('../fonts/Hades.ttf');
 }
 
-.form-not label {
-    color: white !important;
+@font-face {
+    font-family: Ander;
+    src: url('../fonts/Ander.otf');
 }
 
-.btn-confirm {
-    width: 130px;
-    background-color: rgb(255, 173, 31);
-    font-size: 18px;
-    color: white;
+@font-face {
+    font-family: Neufreit;
+    src: url('../fonts/Neufreit.otf');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+.clear {
+    clear: both;
+}
+
+html, body {
+    height: 100%;
+}
+
+.background {
+    width: 100%;
+    margin-top: 80px;
+    height: 100vh;
+    background-image: url('../images/BackgroundWave.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2%;
 }
