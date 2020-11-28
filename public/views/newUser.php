@@ -15,7 +15,7 @@
    <div class="container">
         <section class="form-container">
             <h1>Create Your Account Now!</h1>
-            <form action="<?= URL; ?>/new" method="post">
+            <form action="<?= $router->route('newUserPost'); ?>" method="post">
                 <div class="form-group">
                     <label for="">NickName</label>
                     <input type="text" name="nickname">

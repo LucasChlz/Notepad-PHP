@@ -9,7 +9,7 @@
    <div class="container">
         <section class="form-container">
             <h1>Log Into Your Account</h1>
-            <form action="<?= URL; ?>/new" method="post">
+            <form action="<?= $router->route('loginUserPost'); ?>" method="post">
                 <div class="form-group">
                     <label for="">E-mail</label>
                     <input type="text" name="email">

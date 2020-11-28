@@ -26,8 +26,22 @@ class AppController
         );
     }
 
+    public function homeNote(): void
+    {
+        if (!isset($_SESSION['loginNote'])) {
+            $this->router->redirect('loginUserPage');
+        }
+        echo $this->template->render('home', [
+            'router' => $this->router
+        ]);
+    }
+
     public function newUser(): void
     {
+        if (isset($_SESSION['loginNote'])) {
+            $this->router->redirect('homeNote');
+        }
+        
         echo $this->template->render('newUser', [
             'router' => $this->router,
             'sucess' => $this->sucessMessage,
@@ -35,7 +49,7 @@ class AppController
         ]);
     }
 
-    public function newUserPost($data)
+    public function newUserPost($data): void
     {
         $nickname = $data['nickname'];
         $email = $data['email'];
@@ -44,18 +58,43 @@ class AppController
         try{
             if ($this->userModel->registerNewUser($nickname, $email, $password)) {
                 $this->sucessMessage = 'User sucessfully created';
-                return $this->newUser();    
+                $this->newUser();    
             }
         } catch(Exception $e) {
             $this->errorMessage = $e->getMessage();
-            return $this->newUser();
+            $this->newUser();
         }
     }
 
-    public function loginUserPage()
+    public function loginUserPage():void
     {
+        if (isset($_SESSION['loginNote'])) {
+            $this->router->redirect('homeNote');
+        }
+
         echo $this->template->render('loginUser', [
             'router' => $this->router,
+            'err' => $this->errorMessage
         ]);
+    }
+
+    public function loginUserPost($data): void
+    {   
+        $email = $data['email'];
+        $password = sha1($data['password']);
+
+        try {
+            $this->userModel->loginUser($email,$password);
+            $this->router->redirect('homeNote');
+        } catch(Exception $e) {
+            $this->errorMessage = $e->getMessage();
+            $this->loginUserPage();
+        }
+    }
+
+    public function loggoutUser(): void
+    {
+        session_destroy();
+        $this->router->redirect('loginUserPage');
     }
 }

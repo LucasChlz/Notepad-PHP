@@ -54,4 +54,44 @@ class UserModel
        
         return true;
     }
+
+    public function verifyEmail(string $email):bool
+    {
+        $email = filter_var($email, FILTER_SANITIZE_STRING);
+
+        $verifyEmail = $this->database->connect()->prepare("SELECT * FROM `users` WHERE email = ?");
+        $verifyEmail->execute(array($email));
+
+        if ($verifyEmail->rowCount() === 0) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public function loginUser(string $email, string $password)
+    {
+
+        if (empty($password) || empty($email)) {
+            throw new Exception('Fill all fields');
+        }
+
+        if ($this->verifyEmail($email) === false) {
+            throw new Exception('No account with that email');
+        }
+
+        $checkAccount = $this->database->connect()->prepare("SELECT * FROM `users` WHERE email = ? AND password = ?");
+        $checkAccount->execute(array($email, $password));
+
+        if ($checkAccount->rowCount() === 0) {
+            throw new Exception('Invalid password');
+        } else {
+            $getUserInfo = $checkAccount->fetch();
+
+            $_SESSION['loginNote'] = true;
+            $_SESSION['nickname'] = $getUserInfo['nickname'];
+            $_SESSION['email'] = $getUserInfo['email'];
+        }
+       
+    }
 }
