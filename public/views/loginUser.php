@@ -6,24 +6,13 @@
         <p><?= $err; ?></p>
         </div><!--boxAlert-->
     <?php endif; ?>
-    
-    <?php if (!empty($sucess)): ?>
-        <div class="boxAlert">
-        <p><?= $sucess; ?></p>
-        </div><!--boxAlert-->
-    <?php endif; ?>
    <div class="container">
         <section class="form-container">
-            <h1>Create Your Account Now!</h1>
+            <h1>Log Into Your Account</h1>
             <form action="<?= URL; ?>/new" method="post">
                 <div class="form-group">
-                    <label for="">NickName</label>
-                    <input type="text" name="nickname">
-                </div><!--form-group-->
-
-                <div class="form-group">
                     <label for="">E-mail</label>
-                    <input type="email" name="email">
+                    <input type="text" name="email">
                 </div><!--form-group-->
 
                 <div class="form-group">
@@ -32,7 +21,7 @@
                 </div><!--form-group-->
 
                 <div class="form-group">
-                    <input type="submit" value="Register">
+                    <input type="submit" value="Log In">
                 </div><!--form-group-->
             </form>
         </section><!--form-container-->

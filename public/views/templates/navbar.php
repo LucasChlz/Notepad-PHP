@@ -17,7 +17,7 @@
             <a href=""><img src="public/images/logo.png" alt=""></a>
         </div>
         <ul>
-            <li><a href=""><img src="public/images/login.png" alt=""></a></li>
+            <li><a href="<?= $router->route('loginUserPage'); ?>"><img src="public/images/login.png" alt=""></a></li>
         </ul>
     </div>
 </nav>

@@ -51,4 +51,11 @@ class AppController
             return $this->newUser();
         }
     }
+
+    public function loginUserPage()
+    {
+        echo $this->template->render('loginUser', [
+            'router' => $this->router,
+        ]);
+    }
 }

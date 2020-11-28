@@ -7,8 +7,11 @@ use CoffeeCode\Router\Router;
 $router = new Router(URL);
 $router->namespace('App\Controllers');
 
-$router->group('/');
-$router->get('/new', 'AppController:newUser', 'newUserPage');
-$router->post('/new', 'AppController:newUserPost', 'newUserPost');
+$router->group('/new');
+$router->get('/', 'AppController:newUser', 'newUserPage');
+$router->post('/', 'AppController:newUserPost', 'newUserPost');
+
+$router->group('/login');
+$router->get('/', 'AppController:loginUserPage', 'loginUserPage');
 
 $router->dispatch();
