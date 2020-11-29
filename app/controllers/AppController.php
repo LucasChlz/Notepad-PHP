@@ -34,8 +34,12 @@ class AppController
         if (!isset($_SESSION['loginNote'])) {
             $this->router->redirect('loginUserPage');
         }
+
+        $listNotes = $this->noteModel->listAllNotes();
+
         echo $this->template->render('notes/home', [
-            'router' => $this->router
+            'router' => $this->router,
+            'notes' => $listNotes
         ]);
     }
 
@@ -97,6 +101,7 @@ class AppController
 
     public function logoutUser(): void
     {
+        session_unset();
         session_destroy();
         $this->router->redirect('loginUserPage');
     }

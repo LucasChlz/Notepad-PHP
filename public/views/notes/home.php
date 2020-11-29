@@ -3,10 +3,12 @@
 <section class="background-list">
     <div class="container-create">
         <div class="container-list">
+            <?php foreach($notes as $note): ?>
             <div class="notes-single">
-                <p>My First Note</p>
+                <p>Title: <?= $note['title']; ?></p>
                 <span>Created At: </span>
-            </div><!--notes-group-->
+            </div><!--notes-single-->
+            <?php endforeach; ?>
         </div><!--container-list-->
     </div><!--container--create-->
 </section><!--background-list-->
