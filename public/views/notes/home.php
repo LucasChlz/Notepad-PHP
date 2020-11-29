@@ -6,7 +6,8 @@
             <?php foreach($notes as $note): ?>
             <div class="notes-single">
                 <p>Title: <?= $note['title']; ?></p>
-                <span>Created At: </span>
+                <span>Characters: <?= $note['characters']; ?> </span></br>
+                <span>Created At: <?= $note['created_at']; ?></span>
             </div><!--notes-single-->
             <?php endforeach; ?>
         </div><!--container-list-->

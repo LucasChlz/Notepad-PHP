@@ -24,8 +24,10 @@
                 <div class="form-group">
                     <label for="">Text</label>
                     <textarea id="text" name="text"></textarea>
-                    <span id="count">Characters: </span>
+                    <span>Characters: </span><span id="count"></span>
+                    <input id="countForm" type="hidden" name="character">
                 </div><!--form-control-->
+                
                 
                 <div class="form-group">
                         <input type="submit" value="Save">

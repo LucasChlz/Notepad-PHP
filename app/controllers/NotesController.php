@@ -44,9 +44,10 @@ class NotesController
     {
         $title = filter_var($data['title'], FILTER_SANITIZE_STRING);
         $text = filter_var($data['text'], FILTER_SANITIZE_STRING);
+        $characters = filter_var($data['character'], FILTER_SANITIZE_STRING);
 
         try {
-            $this->notesModel->createNote($title,$text);
+            $this->notesModel->createNote($title, $text, $characters);
             $this->router->redirect('createNote');
         } catch(Exception $e) {
             $this->errorMessage = $e->getMessage();

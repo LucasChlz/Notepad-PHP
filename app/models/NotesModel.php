@@ -17,14 +17,16 @@ class NotesModel
         }
     }
 
-    public function createNote($title, $text): void
+    public function createNote($title, $text, $characters): void
     {
         if (empty($title)) {
             throw new Exception('You need to add a title to save');
         }
 
-        $insertNote = $this->database->connect()->prepare("INSERT INTO `notes` VALUES (null, ?, ?, ?)");
-        if ($insertNote->execute(array($title, $text, $this->token))) {
+        $created_at = date('Y-m-d H:i:s');
+
+        $insertNote = $this->database->connect()->prepare("INSERT INTO `notes` VALUES (null, ?, ?, ?, ?, ?)");
+        if ($insertNote->execute(array($title, $text, $characters, $created_at, $this->token))) {
             throw new Exception('Note sucessfully saved');
         };
     }
