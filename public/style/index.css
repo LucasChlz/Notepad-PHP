@@ -53,3 +53,9 @@ html, body {
     margin: 0 auto;
     padding: 0 2%;
 }
+
+@media (max-height: 500px) {
+    .background {
+        height: 600px;
+    }
+}

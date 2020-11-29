@@ -18,6 +18,7 @@
         </div>
         <ul>
             <li><a href="<?= $router->route('loginUserPage'); ?>"><img src="public/images/login.png" alt=""></a></li>
+            <li><a href="<?= $router->route('newUserPage'); ?>"><img src="public/images/register.png" alt=""></a></li>
         </ul>
     </div>
 </nav>
