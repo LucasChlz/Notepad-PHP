@@ -23,9 +23,10 @@
 
                 <div class="form-group">
                     <label for="">Text</label>
-                    <textarea name="text"></textarea>
+                    <textarea id="text" name="text"></textarea>
+                    <span id="count">Characters: </span>
                 </div><!--form-control-->
-
+                
                 <div class="form-group">
                         <input type="submit" value="Save">
                 </div><!--form-group-->
@@ -33,6 +34,8 @@
         </div><!--form-note-->
     </div><!--container-->
 </section><!--background-create-->
+
+<script type="module" src="<?= URL ?>/public/js/index.js"></script>
 </body>
 </html>
 
