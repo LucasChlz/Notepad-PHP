@@ -97,6 +97,7 @@ class UserModel
 
             $_SESSION['loginNote'] = true;
             $_SESSION['nickname'] = $getUserInfo['nickname'];
+            $_SESSION['token'] = $getUserInfo['token'];
             $_SESSION['email'] = $getUserInfo['email'];
         }
        

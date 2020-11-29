@@ -12,7 +12,7 @@
         <p><?= $sucess; ?></p>
         </div><!--boxAlert-->
     <?php endif; ?>
-   <div class="container">
+   <div class="container-create">
         <section class="form-container">
             <h1>Create Your Account Now!</h1>
             <form action="<?= $router->route('newUserPost'); ?>" method="post">

@@ -5,7 +5,7 @@
         <p><?= $err; ?></p>
         </div><!--boxAlert-->
     <?php endif; ?>
-   <div class="container">
+   <div class="container-create">
         <section class="form-container">
             <h1>Log Into Your Account</h1>
             <form action="<?= $router->route('loginUserPost'); ?>" method="post">

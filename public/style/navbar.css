@@ -1,9 +1,10 @@
 .nav-bar {
     width: 100%;
-    padding: 20px;
-    background-color: rgb(255, 255, 255);
+    padding: 10px 0;
+    min-height: 100px;
     color: rgb(0, 0, 0);
-  
+    position: absolute;
+    z-index: 999;
 }
 
 .nav-bar ul li {

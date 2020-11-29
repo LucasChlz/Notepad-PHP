@@ -7,8 +7,13 @@ use League\Plates\Engine;
 
 class NotesController
 {
+    public $notesModel;
+
     public $template;
     public $router;
+
+    public $sucessMessage;
+    public $errorMessage;
 
     public function __construct($router)
     {
@@ -17,6 +22,8 @@ class NotesController
         if (!isset($_SESSION['loginNote'])) {
             $this->router->redirect('loginUserPage');
         }
+
+        $this->notesModel = new \App\Models\NotesModel;
 
 
         $this->template = Engine::create(
@@ -27,7 +34,23 @@ class NotesController
     public function createNote()
     {
         echo $this->template->render('notes/create', [
-            'router' => $this->router
+            'router' => $this->router,
+            'sucess' => $this->sucessMessage,
+            'err' => $this->errorMessage
         ]);
+    }
+
+    public function createNotePost($data)
+    {
+        $title = filter_var($data['title'], FILTER_SANITIZE_STRING);
+        $text = filter_var($data['text'], FILTER_SANITIZE_STRING);
+
+        try {
+            $this->notesModel->createNote($title,$text);
+            $this->router->redirect('createNote');
+        } catch(Exception $e) {
+            $this->errorMessage = $e->getMessage();
+            $this->createNote();
+        }
     }
 }
