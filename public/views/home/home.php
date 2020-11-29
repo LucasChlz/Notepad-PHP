@@ -1,1 +1,0 @@
-<?= $v->insert('templates/navbar'); ?>

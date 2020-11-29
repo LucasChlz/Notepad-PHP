@@ -12,6 +12,7 @@ class AppController
 
     public $template;
     public $userModel;
+    public $noteModel;
     
     public $sucessMessage;
     public $errorMessage;
@@ -21,6 +22,8 @@ class AppController
         $this->router = $router;
 
         $this->userModel = new \App\Models\UserModel;
+        $this->noteModel = new \App\Models\NotesModel;
+
         $this->template = Engine::create(
             dirname(__DIR__, 2).'/public/views/', 'php'
         );
@@ -31,7 +34,7 @@ class AppController
         if (!isset($_SESSION['loginNote'])) {
             $this->router->redirect('loginUserPage');
         }
-        echo $this->template->render('home/home', [
+        echo $this->template->render('notes/home', [
             'router' => $this->router
         ]);
     }
