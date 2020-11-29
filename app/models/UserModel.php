@@ -44,13 +44,20 @@ class UserModel
         return true;
     }
 
+    public function generateToken(): string
+    {   
+        $token = md5(uniqid(rand(), true));
+        return $token;
+    }
+
     public function registerNewUser(string $nickname, string $email, string $password): bool 
     {
 
         $this->validateData($nickname, $email, $password);
+        $token = $this->generateToken();
 
-        $insert = $this->database->connect()->prepare("INSERT INTO `users` VALUES (null, ?, ?, ?)");
-        $insert->execute(array($nickname, $email, sha1($password)));
+        $insert = $this->database->connect()->prepare("INSERT INTO `users` VALUES (null, ?, ?, ?, ?)");
+        $insert->execute(array($nickname, $email, sha1($password), $token));
        
         return true;
     }

@@ -8,17 +8,23 @@
     <link rel="stylesheet" href="<?= URL ?>/public/style/animation.css">
     <link rel="stylesheet" href="<?= URL ?>/public/style/box.css">
     <link rel="stylesheet" href="<?= URL ?>/public/style/navbar.css">
-    <title>Sig In</title
+    <title>Notes</title
 </head>
 <body>
 <nav class="nav-bar">
     <div class="container">
         <div class="logo">
-            <a href=""><img src="public/images/logo.png" alt=""></a>
+            <a href="<?= $router->route('homeNote'); ?>"><img src="<?= URL ?>/public/images/logo.png" alt=""></a>
         </div>
         <ul>
-            <li><a href="<?= $router->route('loginUserPage'); ?>"><img src="public/images/login.png" alt=""></a></li>
-            <li><a href="<?= $router->route('newUserPage'); ?>"><img src="public/images/register.png" alt=""></a></li>
+            <?php if (!isset($_SESSION['loginNote'])): ?>
+                <li><a href="<?= $router->route('loginUserPage'); ?>"><img src="<?= URL ?>/public/images/login.png" alt=""></a></li>
+                <li><a href="<?= $router->route('newUserPage'); ?>"><img src="<?= URL ?>/public/images/register.png" alt=""></a></li>
+            <?php endif; ?>
+            <?php if (isset($_SESSION['loginNote'])): ?>
+                <li><a href="<?= $router->route('logoutNote') ?>"><img src="<?= URL ?>/public/images/logout.png" alt=""></a></li>    
+                <li><a href="<?= $router->route('createNote') ?>"><img src="<?= URL ?>/public/images/create.png" alt=""></a></li>    
+            <?php endif; ?>
         </ul>
     </div>
 </nav>

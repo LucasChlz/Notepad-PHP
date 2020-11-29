@@ -31,7 +31,7 @@ class AppController
         if (!isset($_SESSION['loginNote'])) {
             $this->router->redirect('loginUserPage');
         }
-        echo $this->template->render('home', [
+        echo $this->template->render('home/home', [
             'router' => $this->router
         ]);
     }
@@ -42,7 +42,7 @@ class AppController
             $this->router->redirect('homeNote');
         }
         
-        echo $this->template->render('newUser', [
+        echo $this->template->render('home/newUser', [
             'router' => $this->router,
             'sucess' => $this->sucessMessage,
             'err' => $this->errorMessage
@@ -72,7 +72,7 @@ class AppController
             $this->router->redirect('homeNote');
         }
 
-        echo $this->template->render('loginUser', [
+        echo $this->template->render('home/loginUser', [
             'router' => $this->router,
             'err' => $this->errorMessage
         ]);
@@ -92,7 +92,7 @@ class AppController
         }
     }
 
-    public function loggoutUser(): void
+    public function logoutUser(): void
     {
         session_destroy();
         $this->router->redirect('loginUserPage');

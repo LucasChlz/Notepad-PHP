@@ -1,5 +1,4 @@
 <?= $v->insert('templates/navbar'); ?>
-
 <section class="background">
     <?php if (!empty($err)): ?>
         <div class="boxAlert">
