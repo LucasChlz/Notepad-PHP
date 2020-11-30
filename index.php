@@ -14,6 +14,7 @@ $router->get('/logout', 'AppController:logoutUser', 'logoutNote');
 $router->group('/notes');
 $router->get('/create', 'NotesController:createNote', 'createNote');
 $router->post('/create', 'NotesController:createNotePost', 'createNotePost');
+$router->get('/delete/{id}', 'NotesController:noteDelete', 'deletePost');
 
 $router->group('/new');
 $router->get('/', 'AppController:newUser', 'newUserPage');

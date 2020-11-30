@@ -5,7 +5,7 @@ namespace App\Controllers;
 use Exception;
 use League\Plates\Engine;
 
-class NotesController
+class NotesController extends AppController
 {
     public $notesModel;
 
@@ -52,6 +52,19 @@ class NotesController
         } catch(Exception $e) {
             $this->errorMessage = $e->getMessage();
             $this->createNote();
+        }
+    }
+
+    public function noteDelete($data)
+    {
+        $id = filter_var($data['id'], FILTER_SANITIZE_STRING);
+
+        try {
+            $this->notesModel->noteDelete($id, $this->router);
+            $this->router->redirect('homeNote');
+        } catch (Exception $e) {
+            $this->errorMessage = $e->getMessage();
+            $this->homeNote();
         }
     }
 }

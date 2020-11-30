@@ -39,6 +39,7 @@ class AppController
 
         echo $this->template->render('notes/home', [
             'router' => $this->router,
+            'error' => $this->errorMessage,
             'notes' => $listNotes
         ]);
     }

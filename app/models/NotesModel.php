@@ -40,4 +40,10 @@ class NotesModel
 
         return $fetchNotes;
     }
+
+    public function noteDelete($id): void
+    {
+        $noteDelete = $this->database->connect()->prepare("DELETE FROM `notes` WHERE id = ? AND user_token = ?");
+        $noteDelete->execute(array($id, $this->token));
+    }
 }

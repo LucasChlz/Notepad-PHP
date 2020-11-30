@@ -8,6 +8,13 @@
                 <p>Title: <?= $note['title']; ?></p>
                 <span>Characters: <?= $note['characters']; ?> </span></br>
                 <span>Created At: <?= $note['created_at']; ?></span>
+                <form action="" method="post">
+                    <div class="delete">
+                        <a href="<?= $router->route('deletePost', [
+                            "id" => $note['id']
+                        ]); ?>">Delete</a>
+                    </div><!--delete-->
+                </form>
             </div><!--notes-single-->
             <?php endforeach; ?>
         </div><!--container-list-->
