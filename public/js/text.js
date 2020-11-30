@@ -7,6 +7,9 @@ export default {
 
         this.count.innerHTML = `${this.tam}`;
 
+        this.tam = this.textInput.value.length;
+        this.count.innerHTML = `${this.tam}`;
+
         this.textInput.oninput = () => {
             this.tam = this.textInput.value.length;
             this.countForm.value = this.tam

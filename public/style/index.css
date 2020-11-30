@@ -121,6 +121,12 @@ html, body {
     
 }
 
+.viewNote {
+    text-decoration: none;
+    color: black;
+}
+
+
 @media (max-height: 500px) {
     .background {
         height: 600px;

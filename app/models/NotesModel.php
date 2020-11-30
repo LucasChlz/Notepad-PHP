@@ -41,6 +41,15 @@ class NotesModel
         return $fetchNotes;
     }
 
+    public function singleNote($id): array
+    {
+        $singleNote = $this->database->connect()->prepare("SELECT * FROM `notes` WHERE id = ? AND user_token = ?");
+        $singleNote->execute(array($id, $this->token));
+        $singleNote = $singleNote->fetch();
+
+        return $singleNote;
+    }
+
     public function noteDelete($id): void
     {
         $noteDelete = $this->database->connect()->prepare("DELETE FROM `notes` WHERE id = ? AND user_token = ?");

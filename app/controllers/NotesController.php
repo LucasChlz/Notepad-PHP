@@ -55,6 +55,18 @@ class NotesController extends AppController
         }
     }
 
+    public function viewNote($data)
+    {
+        $id = filter_var($data['id'], FILTER_SANITIZE_STRING);
+
+        $singleNote = $this->notesModel->singleNote($id);
+
+        echo $this->template->render('notes/singleNote', [
+            'router' => $this->router,
+            'note' => $singleNote
+        ]);
+    }
+
     public function noteDelete($data)
     {
         $id = filter_var($data['id'], FILTER_SANITIZE_STRING);
