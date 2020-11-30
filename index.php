@@ -15,6 +15,7 @@ $router->group('/notes');
 $router->get('/create', 'NotesController:createNote', 'createNote');
 $router->post('/create', 'NotesController:createNotePost', 'createNotePost');
 $router->get('/view/{id}', 'NotesController:viewNote', 'viewNote');
+$router->post('/edit/{id}', 'NotesController:editNote', 'editNote');
 $router->get('/delete/{id}', 'NotesController:noteDelete', 'deleteNote');
 
 $router->group('/new');

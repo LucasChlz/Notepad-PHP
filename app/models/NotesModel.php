@@ -17,7 +17,7 @@ class NotesModel
         }
     }
 
-    public function createNote($title, $text, $characters): void
+    public function createNote(string $title, string $text, string $characters): void
     {
         if (empty($title)) {
             throw new Exception('You need to add a title to save');
@@ -41,7 +41,7 @@ class NotesModel
         return $fetchNotes;
     }
 
-    public function singleNote($id): array
+    public function singleNote(int $id): array
     {
         $singleNote = $this->database->connect()->prepare("SELECT * FROM `notes` WHERE id = ? AND user_token = ?");
         $singleNote->execute(array($id, $this->token));
@@ -50,7 +50,13 @@ class NotesModel
         return $singleNote;
     }
 
-    public function noteDelete($id): void
+    public function editSingleNote($id, $title, $text, $characters): void
+    {  
+        $updateNote = $this->database->connect()->prepare("UPDATE `notes` SET title = ?, text = ?, characters = ? WHERE id = ? AND user_token = ? ");
+        $updateNote->execute(array($title, $text, $characters, $id, $this->token));
+    }
+
+    public function noteDelete(int $id): void
     {
         $noteDelete = $this->database->connect()->prepare("DELETE FROM `notes` WHERE id = ? AND user_token = ?");
         $noteDelete->execute(array($id, $this->token));

@@ -15,7 +15,9 @@
         <?php endif; ?>
     <div class="container-create">
         <div class="form-create">
-            <form action="<?= $router->route(''); ?>" method="post">
+            <form action="<?= $router->route('editNote', [
+                "id" => $note['id']
+            ]); ?>" method="post">
                 <div class="form-group">
                     <label for="">Title</label>
                     <input type="text" name="title" value="<?= $note['title']; ?>">
