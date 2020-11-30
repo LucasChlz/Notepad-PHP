@@ -44,6 +44,13 @@ class AppController
         ]);
     }
 
+    public function errorPage()
+    {
+        echo $this->template->render('notes/error', [
+            'router' => $this->router
+        ]);
+    }
+
     public function newUser(): void
     {
         if (isset($_SESSION['loginNote'])) {

@@ -126,6 +126,13 @@ html, body {
     color: black;
 }
 
+.err {
+    margin-top: 80px;
+    font-size: 60px;
+    font-family: Neufreit;
+    text-align: center;
+}
+
 
 @media (max-height: 500px) {
     .background {

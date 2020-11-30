@@ -59,7 +59,11 @@ class NotesController extends AppController
     {
         $id = filter_var($data['id'], FILTER_SANITIZE_STRING);
 
-        $singleNote = $this->notesModel->singleNote($id);
+        try {
+            $singleNote = $this->notesModel->singleNote($id);
+        } catch (Exception $e) {
+            $this->errorPage();
+        }
 
         echo $this->template->render('notes/singleNote', [
             'sucess' => $this->sucessMessage,
@@ -81,8 +85,7 @@ class NotesController extends AppController
             $this->sucessMessage = 'Saved successfully';
             $this->viewNote($data);
         } catch (Exception $e) {
-            $this->errorMessage = 'error';
-            $this->viewNote($data);
+            $this->errorPage();
         }
       
     }

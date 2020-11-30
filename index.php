@@ -9,6 +9,7 @@ $router->namespace('App\Controllers');
 
 $router->group('/');
 $router->get('/', 'AppController:homeNote', 'homeNote');
+$router->get('/error', 'AppController:errorPage', 'errorNote');
 $router->get('/logout', 'AppController:logoutUser', 'logoutNote');
 
 $router->group('/notes');
@@ -27,3 +28,7 @@ $router->get('/', 'AppController:loginUserPage', 'loginUserPage');
 $router->post('/', 'AppController:loginUserPost', 'loginUserPost');
 
 $router->dispatch();
+
+if ($router->error()) {
+    $router->redirect("errorNote");
+};

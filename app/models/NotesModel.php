@@ -45,12 +45,17 @@ class NotesModel
     {
         $singleNote = $this->database->connect()->prepare("SELECT * FROM `notes` WHERE id = ? AND user_token = ?");
         $singleNote->execute(array($id, $this->token));
-        $singleNote = $singleNote->fetch();
-
-        return $singleNote;
+        
+        if ($singleNote->rowCount() === 0 ) {
+            throw new Exception('This note does not exist');
+        } else {
+            $singleNote = $singleNote->fetch();
+            return $singleNote;
+        }
+        
     }
 
-    public function editSingleNote($id, $title, $text, $characters): void
+    public function editSingleNote(int $id, string $title, string $text, string $characters): void
     {  
         $updateNote = $this->database->connect()->prepare("UPDATE `notes` SET title = ?, text = ?, characters = ? WHERE id = ? AND user_token = ? ");
         $updateNote->execute(array($title, $text, $characters, $id, $this->token));
