@@ -55,8 +55,19 @@ class NotesModel
         
     }
 
-    public function editSingleNote(int $id, string $title, string $text, string $characters): void
-    {  
+    public function editSingleNote(int $id, string $title, string $text, string $characters, $router): void
+    {   
+        if (empty($title)) {
+            throw new Exception('Put a title');
+        }
+
+        $verifyId = $this->database->connect()->prepare("SELECT * FROM `notes` WHERE id = ? AND user_token = ?");
+        $verifyId->execute(array($id, $this->token));
+
+        if ($verifyId->rowCount() === 0) {
+            $router->redirect('errorNote');
+        }
+
         $updateNote = $this->database->connect()->prepare("UPDATE `notes` SET title = ?, text = ?, characters = ? WHERE id = ? AND user_token = ? ");
         $updateNote->execute(array($title, $text, $characters, $id, $this->token));
     }

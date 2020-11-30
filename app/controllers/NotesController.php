@@ -67,7 +67,7 @@ class NotesController extends AppController
 
         echo $this->template->render('notes/singleNote', [
             'sucess' => $this->sucessMessage,
-            'error' => $this->errorMessage,
+            'err' => $this->errorMessage,
             'router' => $this->router,
             'note' => $singleNote
         ]);
@@ -81,11 +81,13 @@ class NotesController extends AppController
         $characters = filter_var($data['character'], FILTER_SANITIZE_STRING);
         
         try {
-            $this->notesModel->editSingleNote($id, $title, $text, $characters);
+            $this->notesModel->editSingleNote($id, $title, $text, $characters, $this->router);
             $this->sucessMessage = 'Saved successfully';
             $this->viewNote($data);
         } catch (Exception $e) {
-            $this->errorPage();
+            $this->errorMessage = $e->getMessage();
+            $this->viewNote($data);
+            // $this->errorPage();
         }
       
     }
