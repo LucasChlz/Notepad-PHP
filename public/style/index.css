@@ -103,7 +103,20 @@ html, body {
 }
 
 .notes-single p {
+    max-width: 20ch;
+    overflow: hidden;;
+    text-overflow: ellipsis;
     font-size: 20px;
+    white-space: nowrap;
+}
+
+.info {
+    float: left;
+
+}
+
+.info span {
+    display: inline-block;
 }
 
 .delete {

@@ -8,8 +8,10 @@
                 <a class="viewNote" href="<?= $router->route('viewNote', [
                     "id" => $note['id']
                 ]) ?>"><p>Title: <?= $note['title']; ?></p></a>
-                <span>Characters: <?= $note['characters']; ?> </span></br>
-                <span>Created At: <?= $note['created_at']; ?></span>
+                <div class="info">
+                    <span>Characters: <?= $note['characters']; ?></span> /
+                    <span>Created At: <?= $note['created_at']; ?></span>
+                </div>
                 <form action="" method="post">
                     <div class="delete">
                         <a href="<?= $router->route('deleteNote', [

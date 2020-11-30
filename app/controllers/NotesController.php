@@ -86,8 +86,7 @@ class NotesController extends AppController
             $this->viewNote($data);
         } catch (Exception $e) {
             $this->errorMessage = $e->getMessage();
-            $this->viewNote($data);
-            // $this->errorPage();
+            $this->viewNote($data); 
         }
       
     }

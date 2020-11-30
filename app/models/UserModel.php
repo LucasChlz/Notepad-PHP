@@ -76,7 +76,7 @@ class UserModel
         return true;
     }
 
-    public function loginUser(string $email, string $password)
+    public function loginUser(string $email, string $password): void
     {
 
         if (empty($password) || empty($email)) {

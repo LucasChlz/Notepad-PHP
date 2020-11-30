@@ -41,7 +41,7 @@ class NotesModel
         return $fetchNotes;
     }
 
-    public function singleNote(int $id): array
+    public function singleNote($id): array
     {
         $singleNote = $this->database->connect()->prepare("SELECT * FROM `notes` WHERE id = ? AND user_token = ?");
         $singleNote->execute(array($id, $this->token));
@@ -55,7 +55,7 @@ class NotesModel
         
     }
 
-    public function editSingleNote(int $id, string $title, string $text, string $characters, $router): void
+    public function editSingleNote($id, string $title, string $text, string $characters, $router): void
     {   
         if (empty($title)) {
             throw new Exception('Put a title');
@@ -72,7 +72,7 @@ class NotesModel
         $updateNote->execute(array($title, $text, $characters, $id, $this->token));
     }
 
-    public function noteDelete(int $id): void
+    public function noteDelete($id): void
     {
         $noteDelete = $this->database->connect()->prepare("DELETE FROM `notes` WHERE id = ? AND user_token = ?");
         $noteDelete->execute(array($id, $this->token));
