@@ -26,8 +26,7 @@ class NotesController extends AppController
         $this->notesModel = new \App\Models\NotesModel;
 
 
-        $this->template = Engine::create(
-            dirname(__DIR__, 2).'/public/views/', 'php'
+        $this->template = Engine::create('public/views/', 'php'
         );
     }
 

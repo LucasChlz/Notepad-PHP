@@ -24,24 +24,22 @@ class AppController
         $this->userModel = new \App\Models\UserModel;
         $this->noteModel = new \App\Models\NotesModel;
 
-        $this->template = Engine::create(
-            dirname(__DIR__, 2).'/public/views/', 'php'
-        );
+        $this->template = Engine::create('public/views', 'php');
     }
 
     public function homeNote(): void
     {
         if (!isset($_SESSION['loginNote'])) {
             $this->router->redirect('loginUserPage');
+        } else {
+            $listNotes = $this->noteModel->listAllNotes();
+
+            echo $this->template->render('notes/home', [
+                'router' => $this->router,
+                'error' => $this->errorMessage,
+                'notes' => $listNotes
+            ]);
         }
-
-        $listNotes = $this->noteModel->listAllNotes();
-
-        echo $this->template->render('notes/home', [
-            'router' => $this->router,
-            'error' => $this->errorMessage,
-            'notes' => $listNotes
-        ]);
     }
 
     public function errorPage()
